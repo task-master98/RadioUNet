@@ -11,19 +11,19 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-                 #dir_gainDPM="gain/DPM/", 
-                 #dir_gainDPMcars="gain/carsDPM/", 
-                 #dir_gainIRT2="gain/IRT2/", 
-                 #dir_gainIRT2cars="gain/carsIRT2/", 
-                 #dir_buildings="png/", 
-                 #dir_antenna= , 
+dir_gainDPM="gain/DPM/"
+dir_gainDPMcars="gain/carsDPM/"
+dir_gainIRT2="gain/IRT2/"
+dir_gainIRT2cars="gain/carsIRT2/"
+dir_buildings="png/"
+
                     
 
 class RadioUNet_c(Dataset):
     """RadioMapSeer Loader for accurate buildings and no measurements (RadioUNet_c)"""
     def __init__(self,maps_inds=np.zeros(1), phase="train",
                  ind1=0,ind2=0, 
-                 dir_dataset="RadioMapSeer/",
+                 dir_dataset=r"C:/Users/ishaa/PycharmProjects/RadioUNet/",
                  numTx=80,                  
                  thresh=0.2,
                  simulation="DPM",
