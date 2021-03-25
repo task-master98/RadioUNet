@@ -41,7 +41,7 @@ class RadioUNet_c(Dataset):
             ind1,ind2: First and last indices from maps_inds to define the maps of the loader, in case phase="custom". 
             dir_dataset: directory of the RadioMapSeer dataset.
             numTx: Number of transmitters per map. Default and maximal value of numTx = 80.                 
-            thresh: Pathlos threshold between 0 and 1. Defaoult is the noise floor 0.2.
+            thresh: Pathlos threshold between 0 and 1. Default is the noise floor 0.2.
             simulation:"DPM", "IRT2", "rand". Default= "DPM"
             carsSimul:"no", "yes". Use simulation with or without cars. Default="no".
             carsInput:"no", "yes". Take inputs with or without cars channel. Default="no".
@@ -68,7 +68,19 @@ class RadioUNet_c(Dataset):
             np.random.shuffle(self.maps_inds)
         else:
             self.maps_inds=maps_inds
-            
+
+        """
+        Standard splits
+        
+        Sr No.|| Train || Test || Validation ||
+        ***************************************
+        1     || 500   || 100  || 100        ||
+        ***************************************
+        2     || 400   || 100  || 200        ||
+        ***************************************
+        
+        
+        """
         if phase=="train":
             self.ind1=0
             self.ind2=500
@@ -828,7 +840,11 @@ class RadioUNet_s_sprseIRT4(Dataset):
     
     
 
-    
+if __name__ == "__main__":
+    RadioTrain = RadioUNet_c(phase="train")
+    RadioTrain.__getitem__(1)
+    # RadioVal = RadioUNet_c(phase="val")
+    # RadioTest = RadioUNet_c(phase="test")
 
     
     
